@@ -18,3 +18,15 @@ body{
     margin: 10px;
     border-bottom: 1px solid white;
 }
+.buttons{
+    height: 390px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    
+}
+button{
+    height: 69px;
+    width: 69px;
+    border-radius: 50%;
+}
