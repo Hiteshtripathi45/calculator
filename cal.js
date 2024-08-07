@@ -9,6 +9,8 @@ Array.from(symbol).forEach(element => {
     })
     
 });
+
+//button logic//
 let num1 = ''
 let num2 = ''
 let num=document.getElementsByClassName('num')
@@ -21,4 +23,12 @@ Array.from(num).forEach(nums =>{
             num2=num2+nums.textContent
         }
     })
+})
+
+//clear//
+let clear = document.querySelector('clear')
+clear.addEventListener('click',()=>{
+    num1 = ''
+    num2 = ''
+    sym = ''
 })
