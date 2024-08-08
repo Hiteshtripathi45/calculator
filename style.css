@@ -13,16 +13,24 @@ body{
     border-radius: 10px;
     background-color: black;
 }
-.display{
-    height: 210px;
+#display{
+    height: 200px;
+    width: 300px;
     margin: 10px;
     border-bottom: 1px solid white;
+    display: flex;
+    justify-content: end;
+    align-items: end;
+    color: aliceblue;
+    overflow-x: auto;
+    box-sizing: border-box;
 }
 .buttons{
     height: 390px;
     display: flex;
     flex-wrap: wrap;
     justify-content: space-around;
+    font-size: 100px;
     
 }
 button{

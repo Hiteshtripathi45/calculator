@@ -1,74 +1,64 @@
-//for getting symbol of calculator//
-
-let symbol = document.getElementsByClassName('symbol')
-let sym
-let turn =false
-Array.from(symbol).forEach(element => {
-    element.addEventListener('click',()=>{
-        sym=element.textContent
-        display.innerHTML+=sym
-        turn = true
-
-    })
-    
-});
-
-//button logic//
-let num1
-let num2
-let num=document.getElementsByClassName('num')
-Array.from(num).forEach(nums =>{
-    nums.addEventListener('click',()=>{
-        if(turn ==false){
-            num1=''
-            num1=num1+nums.textContent
-            display.innerHTML+=num1
+let storeNo=document.getElementById('display')
+let num1=''
+let num2=''
+let sign 
+let turn = false
+let rresult
+nums=document.getElementsByClassName('num')
+Array.from(nums).forEach(no =>{
+    no.addEventListener('click',()=>{
+        if(turn==true){
+            num2+=no.textContent
+            storeNo.textContent=num1+sign+num2
         }
         else{
-            num2=''
-            num2=num2+nums.textContent
-            display.innerHTML+=num1
+            num1+=no.textContent
+            storeNo.textContent=num1
         }
+        
+    })
+
+})
+
+let symbols=document.getElementsByClassName('symbol')
+Array.from(symbols).forEach(sym=>{
+    sym.addEventListener('click',()=>{
+        if (num1 !== '') { 
+            sign = sym.textContent;
+            storeNo.textContent = num1 + sign; 
+            turn = true;
+        }
+
     })
 })
 
-//clear//
-let clear = document.querySelector('.clear')
-clear.addEventListener('click',()=>{
-    num1 = ''
-    num2 = ''
-    display.innerHTML=''
-    sym = null
-    turn=false
-})
+result=document.getElementById('result')
+result.addEventListener('click',answer)
 
-//result//
-let ans
-let display = document.querySelector('.display')
-let result = document.querySelector('.result')
-function results(){
-    switch(sym){
+function answer(){
+    nu=parseFloat(num1)
+    n=parseFloat(num2)
+    switch(sign){
         case '+':
-            ans = (Number(num1)+Number(num2))
+           rresult= nu + n;
             break;
-            case'-':
-            ans = (Number(num1)-Number(num2))
+        case '-':
+            rresult= nu - n;
             break;
-            case'x':
-            ans =(Number(num1)*Number(num2))
-            break;
-            case'/':
-            ans =(Number(num1)/Number(num2))
-            break;
-            case'%':
-            ans =(Number(num1)%Number(num2))
+        case 'x':
+            rresult =nu * n;
+            break;    
+        case '/':
+            rresult =nu / n;
             break; 
+        case '%':
+            rresult =nu % n;
+            break;   
     }
-    display.innerHTML=ans
-    num1=ans
-    num2=''
-
+    console.log(rresult)
+    storeNo.textContent=rresult
+    num1 = rresult.toString();
+    num2 = '';
+    sign = '';
+    turn = false;
 }
-result.addEventListener('click',()=>{
-    results()
-})
