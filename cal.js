@@ -19,18 +19,19 @@ Array.from(nums).forEach(no =>{
     })
 
 })
-
-let symbols=document.getElementsByClassName('symbol')
-Array.from(symbols).forEach(sym=>{
-    sym.addEventListener('click',()=>{
-        if (num1 !== '') { 
+const symbols = document.getElementsByClassName('symbol');
+Array.from(symbols).forEach(sym => {
+    sym.addEventListener('click', () => {
+        if (num1 !== '') {
+            if (turn && num2 !== '') {
+                answer(); // Calculate the result if there are already two numbers and an operator
+            }
             sign = sym.textContent;
-            storeNo.textContent = num1 + sign; 
+            storeNo.textContent = num1 + sign;
             turn = true;
         }
-
-    })
-})
+    });
+});
 
 result=document.getElementById('result')
 result.addEventListener('click',answer)
@@ -59,6 +60,15 @@ function answer(){
     storeNo.textContent=rresult
     num1 = rresult.toString();
     num2 = '';
-    sign = '';
+    sign = undefined;
     turn = false;
 }
+let clear =document.getElementById('clear')
+clear.addEventListener('click',()=>{
+    storeNo.textContent=undefined
+    num1 = ''
+    num2 = '';
+    sign = undefined;
+    turn = false;
+
+})
